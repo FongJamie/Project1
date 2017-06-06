@@ -1,12 +1,16 @@
 class DbClass:
+
+    def password(self):
+        return "Peaceout!"
+
     def __init__(self):
         import mysql.connector as connector
 
         self.__dsn = {
             "host": "localhost",
             "user": "root",
-            "passwd": "PasswdHere",
-            "db": "DBNameHere"
+            "passwd": DbClass.password(),
+            "db": "db_project"
         }
 
         self.__connection = connector.connect(**self.__dsn)
