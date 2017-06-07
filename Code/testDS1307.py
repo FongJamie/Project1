@@ -1,4 +1,4 @@
-from Model.DS1307 import DS1307
+from Code.Model.DS1307 import DS1307
 import time
 
 test = DS1307()

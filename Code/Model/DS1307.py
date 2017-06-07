@@ -3,14 +3,14 @@ from datetime import datetime
 
 
 class DS1307():
-    _ADDRESS_SECONDS = 0x00
-    _ADDRESS_MINUTES = 0x01
-    _ADDRESS_HOURS = 0x02
-    _ADDRESS_DAY = 0x03
-    _ADDRESS_DATE = 0x04
-    _ADDRESS_MONTH = 0x05
-    _ADDRESS_YEAR = 0x06
-    _ADDRESS_CONTROL = 0x07
+    _addressSeconds = 0x00
+    _addressMinutes = 0x01
+    _addressHours = 0x02
+    _addressDay = 0x03
+    _addressDate = 0x04
+    _addressMonth = 0x05
+    _addressYear = 0x06
+    _addressControl = 0x07
 
     def __init__(self, i2cbus=1, address=0x68):  # 7 bits + R/W toevoegen
         self.bus = smbus.SMBus(1)  # pi 1 => bus 0 vanaf pi2 => bus 1
@@ -38,49 +38,49 @@ class DS1307():
 
     #Year
     def getYear(self):
-        return self.__BCDtoInt(self.__read(self._ADDRESS_YEAR))
+        return self.__BCDtoInt(self.__read(self._addressYear))
 
     def writeYear(self, jaartal):
-        return self.__write(self._ADDRESS_YEAR, self.__IntToBCD(jaartal))
+        return self.__write(self._addressYear, self.__IntToBCD(jaartal))
 
     #Month
     def getMonth(self):
-        return self.__BCDtoInt(self.__read(self._ADDRESS_MONTH))
+        return self.__BCDtoInt(self.__read(self._addressMonth))
 
     def writeMonth(self, maand):
-        return self.__write(self._ADDRESS_MONTH, self.__IntToBCD(maand))
+        return self.__write(self._addressMonth, self.__IntToBCD(maand))
 
     #Day
     def getDay(self):
-        return self.__BCDtoInt(self.__read(self._ADDRESS_DAY))
+        return self.__BCDtoInt(self.__read(self._addressDay))
 
     def writeDay(self, dag):
-        return self.__write(self._ADDRESS_DAY, self.__IntToBCD(dag))
+        return self.__write(self._addressDay, self.__IntToBCD(dag))
 
     #Hours
     def getHours(self):
-        return self.__BCDtoInt(self.__read(self._ADDRESS_HOURS))
+        return self.__BCDtoInt(self.__read(self._addressHours))
 
     def writeHours(self, uur):
-        return self.__write(self._ADDRESS_HOURS, self.__IntToBCD(uur))
+        return self.__write(self._addressHours, self.__IntToBCD(uur))
 
     #Minutes
     def getMinutes(self):
-        return self.__BCDtoInt(self.__read(self._ADDRESS_MINUTES))
+        return self.__BCDtoInt(self.__read(self._addressMinutes))
 
     def writeMinutes(self, minuten):
-        return self.__write(self._ADDRESS_MINUTES, self.__IntToBCD(minuten))
+        return self.__write(self._addressMinutes, self.__IntToBCD(minuten))
 
     #Seconden
     def getSeconds(self):
-        return self.__BCDtoInt(self.__read(self._ADDRESS_SECONDS))
+        return self.__BCDtoInt(self.__read(self._addressSeconds))
 
     def writeSeconds(self, seconden):
-        return self.__write(self._ADDRESS_SECONDS, self.__IntToBCD(seconden))
+        return self.__write(self._addressSeconds, self.__IntToBCD(seconden))
 
 
 
-
+    #Volledige datum lezen
     def read_datetime(self, century=21):
         return datetime((century - 1) * 100 + self.getYear(),
                         self.getMonth(), self.getDay() , self.getHours(), self.getMinutes(), self.getSeconds())
