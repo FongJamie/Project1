@@ -1,40 +1,70 @@
 import time, math
-import RPi.GPIO as GPIO
+import time
 # import matplotlib
+from Flask.DbClass import DbClass
 
 # ventilator = 21
 # gevraagdeTemperatuur = 28
 
+db_object = DbClass()
+
 bestandpath = "/dev/rfcomm0"
 
-GPIO.setmode(GPIO.BCM)
 
 def leesBestand(bestand):
-    fo = open(bestand, "r")
-    lijn = fo.readline()
-    fo.close()
+    lijn = ''
+    try:
+        fo = open(bestand, "r")
+        lijn = fo.readline()
+        lijn = lijn.rstrip('\n')
+        fo.close()
+    except FileNotFoundError as fnfe:
+        print("Foutmelding: bestand niet gevonden.")
     return lijn
 
-# def leesTemp(pLijnen):
-#     positie = pLijnen[1].find("t=")
-#     if positie != -1:
-#         temperatuurLijn = pLijnen[1].rstrip("\n").split("t=")
-#         temperatuur = float(temperatuurLijn[1])
-#         return temperatuur
+def knop_ingedrukt(karakter):
+    if(karakter == "k"):
+        db_object.tijdDoorsturenNaarDb()
+        print("YES")
 
-# try:
-#     while True:
-#         temperatuur = leesTemp(leesBestand(bestandpath)) /1000
-#         vershilTemperatuur = temperatuur - gevraagdeTemperatuur
-#
-#         print("%.2f graden Celsius %f" % (temperatuur, vershilTemperatuur))
-#
-#         time.sleep(.5)
-#
-# except KeyboardInterrupt:
-#     GPIO.output(ventilator, GPIO.LOW)
 
-print(leesBestand(bestandpath))
+def inlezen_bestand(bestandsnaam):
+    lijnen = []
+    try:
+        fo = open(bestandsnaam)
+        lijn = fo.readline()
+        while (lijn != ""):
+            lijn = lijn.rstrip('\n')
+            # lijn = lijn.replace("\"", "")
+            try:
+                # delen = lijn.split(";")
+                lijnen.append(lijn)
+            except:
+                print("Volgende lijn werd niet verwerkt: " + lijn)
 
-GPIO.cleanup()
-print("End program")
+            # volgende lijn inlezen
+            lijn = fo.readline()
+
+        fo.close()
+
+    except FileNotFoundError as fnfe:
+        print("Foutmelding: bestand niet gevonden.")
+
+    return lijnen
+
+
+
+try:
+    while True:
+        var = leesBestand(bestandpath)
+        # print(leesBestand(bestandpath))
+        knop_ingedrukt(var)
+        time.sleep(1)
+
+except KeyboardInterrupt:
+    print("Einde")
+
+# print(inlezen_bestand(bestandpath))
+
+# GPIO.cleanup()
+# print("End program")

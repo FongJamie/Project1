@@ -1,12 +1,26 @@
 from flask import Flask
+from flask import render_template
 import os
+
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def homepage():
+    return render_template('index.html')
+
+@app.route('/gegevens')
+def gegevens():
+    return render_template('gegevens.html')
+
+@app.route('/profiel')
+def profiel():
+    return render_template('profiel.html')
+
+@app.route('/instellingen')
+def instellingen():
+    return render_template('instellingen.html')
 
 
 if __name__ == '__main__':

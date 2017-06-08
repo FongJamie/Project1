@@ -17,12 +17,16 @@ class DS1307():
         self.address = address
 
     def __BCDtoInt(self, data):
+        return ((data >> 4) * 10) + (data & 0x0F)
+
         e = data & 0x0f
         t = data >> 4
         return 10 * t + e
 
 
     def __IntToBCD(self, number):
+        return ((number // 10) << 4) | (number % 10)
+
         e = number % 10
         t = number // 10
         return t << 4 | e   #OR
@@ -57,6 +61,7 @@ class DS1307():
     def writeDay(self, dag):
         return self.__write(self._addressDay, self.__IntToBCD(dag))
 
+
     #Hours
     def getHours(self):
         return self.__BCDtoInt(self.__read(self._addressHours))
@@ -81,7 +86,9 @@ class DS1307():
 
 
     #Volledige datum lezen
-    def read_datetime(self, century=21):
-        return datetime((century - 1) * 100 + self.getYear(),
-                        self.getMonth(), self.getDay() , self.getHours(), self.getMinutes(), self.getSeconds())
+    # def read_datetime(self, century=21):
+    #     return datetime((century - 1) * 100 + self.getYear(), self.getMonth(), self.getDay() , self.getHours(), self.getMinutes(), self.getSeconds())
 
+
+    def getFullDate(self):
+        return str(self.getDay()) + "/" + str(self.getMonth()) + "/" + str(self.getYear()) + " " + str(self.getHours()) + ":" + str(self.getMinutes()) + ":" + str(self.getSeconds())

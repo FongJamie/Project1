@@ -9,8 +9,8 @@ class DbClass:
         self.__dsn = {
             "host": "localhost",
             "user": "root",
-            "passwd": DbClass.password(),
-            "db": "db_project"
+            "passwd": "",
+            "db": "project_db"
         }
 
         self.__connection = connector.connect(**self.__dsn)
@@ -45,3 +45,9 @@ class DbClass:
         self.__cursor.execute(sqlCommand)
         self.__connection.commit()
         self.__cursor.close()
+
+    def tijdDoorsturenNaarDb(self):
+        query = "INSERT INTO `project_db`.`meting`(`Tijdstip gedrukt`,`WaterbekerID`,`gebruiker_ID`) VALUES (NOW(),1,1);"
+        self.__cursor.execute(query)
+        self.__connection.commit()
+        # self.__cursor.close()
