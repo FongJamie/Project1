@@ -1,8 +1,5 @@
 class DbClass:
 
-    def password(self):
-        return "Peaceout!"
-
     def __init__(self):
         import mysql.connector as connector
 
