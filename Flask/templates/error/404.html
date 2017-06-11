@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>404 ERROR</title>
+    <link rel="stylesheet" href="../static/css/pagina.css">
+</head>
+<body>
+
+    <header>
+		<nav>
+            <a href="{{ url_for("homepagina") }}" id="logo"></a>
+			<ul>
+
+				<li><a href="{{ url_for("homepagina") }}" class="current">Home</a></li>
+				<li><a href="{{ url_for("gegevens") }}">Gegevens</a></li>
+				<li><a href="{{ url_for("profiel") }}">Drinklogboek</a></li>
+				<li><a href="{{ url_for("instellingen") }}">Instellingen</a></li>
+
+			</ul>
+		</nav>
+	</header>
+
+
+<section>
+
+    <h1>404 Error</h1>
+
+    <p>Er is een fout begaan, klik <a href="{{ url_for("homepagina") }}" id="error">HIER</a> om terug te naar de homepagina te gaan.</p>
+
+</section>
+
+	<footer class="footer-distributed">
+
+			<div class="footer-right">
+
+                <p>New Media & Communication Technology - Howest Kortrijk</p>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a href="{{ url_for("homepagina") }}">Home</a>
+					<a href="{{ url_for("gegevens") }}">Gegevens</a>
+					<a href="{{ url_for("profiel") }}">Drinklogboek</a>
+					<a href="{{ url_for("instellingen") }}">Instellingen</a>
+				</p>
+
+				<p>Jamie Fong &copy; 2017</p>
+			</div>
+	</footer>
+
+</body>
+</html>

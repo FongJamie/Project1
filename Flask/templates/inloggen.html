@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>smartHydration - Profiel</title>
+    <title>smartHydration - Inloggen</title>
     <link rel="stylesheet" href="../static/css/pagina.css">
 </head>
 <body>
 
-	<header>
+    <header>
 		<nav>
-            <a href="{{ url_for("homepagina") }}" id="logo">smartHydration</a>
+            <a href="{{ url_for("homepagina") }}" id="logo"></a>
 			<ul>
 
 				<li><a href="{{ url_for("homepagina") }}" class="current">Home</a></li>
@@ -21,52 +21,32 @@
 		</nav>
 	</header>
 
+
     <section>
 
-    <h1>Profiel</h1>
+        <h1>Inloggen</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Voornaam</th>
-                <th>Naam</th>
-                <th>Geslacht</th>
-                <th>Gewicht</th>
-                <th>Grootte</th>
-                <th>Activiteit</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                {% for data in gebruiker %}
-                    <td>{{ data }}</td>
-                {% endfor %}
-            </tr>
-        </tbody>
+        <form action="">
+
+            <div>
+            <label for="gebruikersnaam">Gebruikersnaam</label>
+            <input type="text" name="gebruikersnaam" id="gebruikersnaam" required>
+            </div>
+
+            <div>
+            <label for="wachtwoord">Wachtwoord</label>
+            <input type="password" name="wachtwoord" id="wachtwoord" required>
+            </div>
 
 
+            <div>
+		        <a href="{{ url_for("homepagina") }}" class="btn orange">Inloggen</a>
+            </div>
 
-    </table>
 
-
-    <h1>Drinklogboek </h1>
-		<table>
-			<thead>
-			    <tr>
-			      <th>ID</th>
-			      <th>Tijdstip</th>
-			    </tr>
-			</thead>
-			<tbody>
-                {% for meting in metingen %}
-			    <tr>
-                    <td>{{ meting[0] }}</td>
-                    <td>{{ meting[1] }}</td>
-			    </tr>
-                {% endfor %}
-			</tbody>
-		</table>
+        </form>
     </section>
+
 	<footer class="footer-distributed">
 
 			<div class="footer-right">

@@ -5,7 +5,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 body {
 	font-size: 1.05em;
 	line-height: 1.25em;
-	font-family: Lato, Arial, Helvetica, sans-serif;
+	font-family: "Calibri Light", Arial, Helvetica, sans-serif;
 	background: #f9f9f9;
 	color: #555;
 }
@@ -25,10 +25,16 @@ a:hover {
 }
 
 img {
-
-	width: 100%;
+	height: 350px;
+	width: 250px;
 
 }
+
+.vertical-align, img{
+	vertical-align: middle;
+}
+
+
 
 /*NAV*/
 
@@ -48,11 +54,11 @@ nav {
 
 	margin: 20px;
 	float: left;
-	width: 200px;
+	width: 300px;
 	height: 40px;
-	background: url(../img/logo.png) no-repeat center;
+	background: url(../images/logoSmartHydration.png) no-repeat center;
+	/*background-image: url("../images/logoSmartHydration.png");*/
 	display: block;
-
 }
 
 ul {
@@ -77,18 +83,17 @@ li {
 
 }
 
-.current {
+/*.current {*/
 
-	color: #6b1201;
-	font-weight: bold;
+	/*color: #6b1201;*/
+	/*font-weight: bold;*/
 
-}
+/*}*/
 
 /*CONTENT*/
 
 
 section {
-
 	margin: 80px auto 40px;
 	max-width: 980px;
 	position: relative;
@@ -97,19 +102,68 @@ section {
 }
 
 h1 {
-
 	font-size: 2em;
 	color: cornflowerblue;
 	line-height: 1.15em;
 	margin: 20px 0 ;
-
 }
 
 p {
-
 	line-height: 1.45em;
 	margin-bottom: 20px;
+}
 
+form{
+	padding-top: 30px;
+	padding-bottom: 70px;
+}
+
+form div{
+	font-size: 18px;
+	padding-bottom: 30px;
+	border: 2px cornflowerblue;
+}
+
+form label{
+	margin-right: 60px;
+}
+
+#verzendknop{
+	margin-top: 10px;
+	padding: 5px;
+	width: 200px;
+}
+
+.buttons-left{
+	float: right;
+	margin-right: 50px;
+	display: block;
+	padding-bottom: 400px;
+}
+
+.buttons-left div:nth-child(2){
+	width: 200px;
+
+}
+
+.login-reg{
+	margin-left: 400px;
+}
+
+p > a{
+	color: #555;
+}
+
+p > a:hover{
+	text-decoration: underline;
+}
+
+
+/*CHART*/
+
+#chartdiv {
+	width: 100%;
+	height: 500px;
 }
 
 /*TABLE*/
@@ -139,6 +193,20 @@ table tr td {
   text-align: left;
 }
 
+.vertical-table th{
+	width: 475px;
+}
+
+
+
+
+
+
+
+
+
+
+
 /*BUTTONS*/
 
  .btn {
@@ -153,9 +221,9 @@ table tr td {
     -moz-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
-    font-family: sans-serif;
+    font-family: "Calibri Light", sans-serif;
     font-weight: 800;
-    font-size: .85em;
+    font-size: .95em;
     text-transform: uppercase;
     text-align: center;
     text-decoration: none;
@@ -198,7 +266,8 @@ table tr td {
 }
 
 .orange {
-    background-color: #e96633;
+    background-color: royalblue;
+	width: 200px;
 }
 
 
@@ -211,8 +280,11 @@ table tr td {
 	width: 100%;
 	text-align: left;
 	font: medium 14px sans-serif;
-	padding: 45px 80px;
+	padding: 30px 80px;
 	margin-top: 80px;
+	margin-bottom: 0;
+	bottom: 0;
+	position: fixed;
 }
 
 .footer-distributed .footer-left p{
@@ -234,12 +306,15 @@ table tr td {
 	line-height: 1.8;
 	text-decoration: none;
 	color:  inherit;
+	margin-right: 10px;
 }
 
 .footer-distributed .footer-right{
 	float: right;
 	margin-top: 6px;
-	max-width: 180px;
+	max-width: 450px;
+	margin-right: 20px;
+	margin-bottom: 20px;
 }
 
 .footer-distributed .footer-right a{
@@ -254,6 +329,15 @@ table tr td {
 	line-height: 35px;
 	margin-left: 3px;
 }
+
+.footer-distributed .footer-right p{
+	display: inline-block;
+	color: white;
+	font-size: 16px;
+	padding-top: 10px;
+}
+
+
 
 /*MEDIA QUERY = RESPONSIVE AANPASSINGEN*/
 @media only screen and (max-width : 740px) {

@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>smartHydration - Instellingen</title>
+    <title>smartHydration - Registreren</title>
     <link rel="stylesheet" href="../static/css/pagina.css">
 </head>
 <body>
+
     <header>
 		<nav>
             <a href="{{ url_for("homepagina") }}" id="logo"></a>
@@ -20,11 +21,19 @@
 		</nav>
 	</header>
 
+
+
+
     <section>
+        <h1>Registreren</h1>
 
-        <h1>Instellingen</h1>
+        <form action="">
 
-        <form action="" method="post">
+            <div>
+            <label for="gebruikersnaam">Gebruikersnaam</label>
+            <input type="text" name="gebruikersnaam" id="gebruikersnaam">
+            </div>
+
             <div>
             <label for="voornaam">Voornaam</label>
             <input type="text" name="voornaam" id="voornaam">
@@ -43,12 +52,12 @@
             </div>
 
             <div>
-            <label for="gewicht">Gewicht (in kg)</label>
+            <label for="gewicht">Gewicht</label>
             <input type="number" name="gewicht" id="gewicht">
             </div>
 
             <div>
-            <label for="grootte">Grootte (in cm)</label>
+            <label for="grootte">Grootte</label>
             <input type="number" name="grootte" id="grootte">
             </div>
 
@@ -60,25 +69,18 @@
             <option value="Veel">Veel</option></select>
             </div>
 
-            <input type="submit" value="Opslaan" id="verzendknop" class="btn orange">
+            <div>
+            <label for="wachtwoord">Wachtwoord</label>
+            <input type="password" name="wachtwoord" id="wachtwoord">
+            </div>
+
+{#            <div>#}
+{#		        <a href="{{ url_for("homepagina") }}" class="btn orange">Registreren</a>#}
+{#            </div>#}
+            <input type="submit" name="Registreren" value="Registreren" class="btn orange" required>
+
 
         </form>
-        
-
-        <div class="buttons-left">
-
-            <div>
-		        <a href="{{ url_for("wachtwoordwijzigen") }}" class="btn orange">Wachtwoord wijzigen</a>
-            </div>
-
-            <div>
-		        <a href="{{ url_for("homepagina") }}" class="btn orange">Afmelden</a>
-            </div>
-
-        </div>
-
-
-
 
 
     </section>
@@ -103,7 +105,6 @@
 				<p>Jamie Fong &copy; 2017</p>
 			</div>
 	</footer>
-
 
 
 </body>

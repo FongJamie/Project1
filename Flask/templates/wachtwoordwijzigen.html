@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>smartHydration - Wachtwoord wijzigen</title>
+    <link rel="stylesheet" href="../static/css/pagina.css">
+</head>
+<body>
+	<header>
+		<nav>
+            <a href="{{ url_for("homepagina") }}" id="logo"></a>
+			<ul>
+
+				<li><a href="{{ url_for("homepagina") }}" class="current">Home</a></li>
+				<li><a href="{{ url_for("gegevens") }}">Gegevens</a></li>
+				<li><a href="{{ url_for("profiel") }}">Drinklogboek</a></li>
+				<li><a href="{{ url_for("instellingen") }}">Instellingen</a></li>
+
+			</ul>
+		</nav>
+	</header>
+
+    <section>
+        <h1>Wachtwoord wijzigen</h1>
+
+        <form action="" method="post">
+
+            <div>
+            <label for="oud">Oud wachtwoord</label>
+            <input type="password" name="oud" id="oud">
+            </div>
+
+            <div>
+            <label for="nieuw">Nieuw wachtwoord</label>
+            <input type="password" name="nieuw" id="nieuw">
+            </div>
+
+            <div>
+            <label for="bevestig">Bevestig wachtwoord</label>
+            <input type="password" name="bevestig" id="bevestig">
+            </div>
+
+            <input type="submit" value="Wachtwoord wijzigen" id="verzendknop">
+
+            <div>
+		        <a href="{{ url_for("wachtwoordwijzigen") }}" class="btn orange">Wachtwoord wijzigen</a>
+            </div>
+
+        </form>
+
+    </section>
+
+	<footer class="footer-distributed">
+
+			<div class="footer-right">
+
+                <p>New Media & Communication Technology - Howest Kortrijk</p>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a href="{{ url_for("homepagina") }}">Home</a>
+					<a href="{{ url_for("gegevens") }}">Gegevens</a>
+					<a href="{{ url_for("profiel") }}">Drinklogboek</a>
+					<a href="{{ url_for("instellingen") }}">Instellingen</a>
+				</p>
+
+				<p>Jamie Fong &copy; 2017</p>
+			</div>
+
+	</footer>
+
+
+</body>
+</html>

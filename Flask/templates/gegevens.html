@@ -2,9 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>smartHydration - Overzicht</title>
+    <link rel="stylesheet" href="../static/css/pagina.css">
 </head>
 <body>
+    <header>
+		<nav>
+            <a href="{{ url_for("homepagina") }}" id="logo"></a>
+			<ul>
+
+				<li><a href="{{ url_for("homepagina") }}" class="current">Home</a></li>
+				<li><a href="{{ url_for("gegevens") }}">Overzicht</a></li>
+				<li><a href="{{ url_for("profiel") }}">Drinklogboek</a></li>
+				<li><a href="{{ url_for("instellingen") }}">Instellingen</a></li>
+
+			</ul>
+		</nav>
+	</header>
+
+
+    <section>
+        <h1>Overzicht</h1>
+
+        <table class="vertical-table">
+                <tr>
+                    <th>Hoeveel keer gedronken per dag (één beker): </th>
+                    <td>{{ gedronkenPerDag }}</td>
+                </tr>
+                <tr>
+                    <th>Aantal liter gedronken per dag: </th>
+                    <td>test</td>
+                </tr>
+                <tr>
+                    <th>Gemiddelde tijd tussen slokken water:</th>
+                    <td>test</td>
+                </tr>
+                <tr>
+                    <th>Gemiddeld aantal liter gedronken per dag: </th>
+                    <td>test</td>
+                </tr>
+
+        </table>
+
+        <div id="chartdiv"></div>
+
+    </section>
+
+
+
+	<footer class="footer-distributed">
+
+			<div class="footer-right">
+
+                <p>New Media & Communication Technology - Howest Kortrijk</p>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a href="{{ url_for("homepagina") }}">Home</a>
+					<a href="{{ url_for("gegevens") }}">Overzicht</a>
+					<a href="{{ url_for("profiel") }}">Drinklogboek</a>
+					<a href="{{ url_for("instellingen") }}">Instellingen</a>
+				</p>
+
+				<p>Jamie Fong &copy; 2017</p>
+			</div>
+
+	</footer>
+
+    <script src="../static/js/grafiek.js"></script>
 
 </body>
 </html>
