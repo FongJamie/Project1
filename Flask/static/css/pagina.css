@@ -27,11 +27,24 @@ a:hover {
 img {
 	height: 350px;
 	width: 250px;
+	margin-top: 20px;
 
 }
 
-.vertical-align, img{
-	vertical-align: middle;
+
+
+.naast-elkaar > div{
+	display: inline-block;
+	width: 45%;
+	margin: 1%;
+}
+
+.naast-elkaar > div > img{
+	width: 60%;
+    height: 75%;
+	margin: 0 auto;
+	display: block;
+    /*float: right*/
 }
 
 
@@ -98,6 +111,7 @@ section {
 	max-width: 980px;
 	position: relative;
 	padding: 20px 20px 20px 20px;
+	padding-bottom: 150px;
 
 }
 
@@ -116,6 +130,7 @@ p {
 form{
 	padding-top: 30px;
 	padding-bottom: 70px;
+	float: left;
 }
 
 form div{
@@ -124,9 +139,61 @@ form div{
 	border: 2px cornflowerblue;
 }
 
-form label{
-	margin-right: 60px;
+/*form label{*/
+	/*margin-right: 60px;*/
+/*}*/
+
+
+.overzicht-h1{
+	font-size: 1.25em;
 }
+
+
+
+#voornaam{
+	margin-left: 91px;
+}
+
+#achternaam{
+	margin-left: 78px;
+}
+
+#geslacht{
+	margin-left: 105px;
+}
+
+#gewicht{
+	margin-left: 60px;
+}
+
+#grootte{
+	margin-left: 58px;
+}
+
+#activiteit{
+	margin-left: 105px;
+}
+
+#oud{
+	margin-left: 88px;
+}
+
+#nieuw{
+	margin-left: 73px;
+}
+
+#bevestig{
+	margin-left: 60px;
+}
+
+#gebruikersnaam{
+	margin-left: 60px;
+}
+
+#wachtwoord{
+	margin-left: 86px;
+}
+
 
 #verzendknop{
 	margin-top: 10px;
@@ -139,6 +206,7 @@ form label{
 	margin-right: 50px;
 	display: block;
 	padding-bottom: 400px;
+	padding-top: 85px;
 }
 
 .buttons-left div:nth-child(2){
@@ -147,7 +215,7 @@ form label{
 }
 
 .login-reg{
-	margin-left: 400px;
+	margin-top: 80px;
 }
 
 p > a{
@@ -159,12 +227,7 @@ p > a:hover{
 }
 
 
-/*CHART*/
 
-#chartdiv {
-	width: 100%;
-	height: 500px;
-}
 
 /*TABLE*/
 
@@ -198,7 +261,9 @@ table tr td {
 }
 
 
-
+#drinklogboek-table{
+	width: 40%;
+}
 
 
 
@@ -280,16 +345,25 @@ table tr td {
 	width: 100%;
 	text-align: left;
 	font: medium 14px sans-serif;
-	padding: 30px 80px;
+	padding: 4px 80px;
 	margin-top: 80px;
 	margin-bottom: 0;
 	bottom: 0;
 	position: fixed;
 }
 
+.footer-distributed .footer-left{
+	margin-top: 15px;
+}
+
+.footer-distributed .footer-right{
+	margin-top: 10px;
+}
+
+
 .footer-distributed .footer-left p{
 	color:  #8f9296;
-	font-size: 12px;
+	font-size: 13px;
 	margin: 0;
 }
 
@@ -337,7 +411,32 @@ table tr td {
 	padding-top: 10px;
 }
 
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
 
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
 
 /*MEDIA QUERY = RESPONSIVE AANPASSINGEN*/
 @media only screen and (max-width : 740px) {

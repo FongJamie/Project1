@@ -9,7 +9,7 @@
 
 	<header>
 		<nav>
-            <a href="{{ url_for("homepagina") }}" id="logo">smartHydration</a>
+            <a href="{{ url_for("homepagina") }}" id="logo"></a>
 			<ul>
 
 				<li><a href="{{ url_for("homepagina") }}" class="current">Home</a></li>
@@ -31,8 +31,8 @@
                 <th>Voornaam</th>
                 <th>Naam</th>
                 <th>Geslacht</th>
-                <th>Gewicht</th>
-                <th>Grootte</th>
+                <th>Gewicht (in kg)</th>
+                <th>Grootte (in cm)</th>
                 <th>Activiteit</th>
             </tr>
         </thead>
@@ -50,10 +50,10 @@
 
 
     <h1>Drinklogboek </h1>
-		<table>
+		<table id="drinklogboek-table">
 			<thead>
 			    <tr>
-			      <th>ID</th>
+			      <th>Nummer</th>
 			      <th>Tijdstip</th>
 			    </tr>
 			</thead>

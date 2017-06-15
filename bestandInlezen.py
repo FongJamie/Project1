@@ -1,10 +1,6 @@
-import time, math
 import time
-# import matplotlib
-from Flask.DbClass import DbClass
 
-# ventilator = 21
-# gevraagdeTemperatuur = 28
+from Flask.DbClass import DbClass
 
 db_object = DbClass()
 

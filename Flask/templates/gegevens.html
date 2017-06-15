@@ -24,27 +24,27 @@
     <section>
         <h1>Overzicht</h1>
 
+        <h1 class="overzicht-h1">Hoeveel keer gedronken per dag (één beker):</h1>
         <table class="vertical-table">
-                <tr>
-                    <th>Hoeveel keer gedronken per dag (één beker): </th>
-                    <td>{{ gedronkenPerDag }}</td>
-                </tr>
-                <tr>
-                    <th>Aantal liter gedronken per dag: </th>
-                    <td>test</td>
-                </tr>
-                <tr>
-                    <th>Gemiddelde tijd tussen slokken water:</th>
-                    <td>test</td>
-                </tr>
-                <tr>
-                    <th>Gemiddeld aantal liter gedronken per dag: </th>
-                    <td>test</td>
-                </tr>
+            <thead>
+            <tr>
+                <th>Datum</th>
+                <th>Aantal keer gedrukt</th>
+                <th>Aantal liter gedronken</th>
+            </tr>
+            </thead>
+            <tbody>
 
+                {% for record in gedronkenPerDag %}
+                    <tr>
+                        <td>{{ record[0] }}</td>
+                        <td>{{ record[1] }}</td>
+                        <td>{{ record[2]|round(2) }}</td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
         </table>
-
-        <div id="chartdiv"></div>
 
     </section>
 

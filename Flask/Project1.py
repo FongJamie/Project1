@@ -1,10 +1,13 @@
-from flask import Flask
-from flask import render_template
-from DbClass import DbClass
 import os
 
+from DbClass import DbClass
+from flask import Flask
+from flask import render_template
+from flask import redirect
 
 app = Flask(__name__)
+
+Db_Layer = DbClass()
 
 @app.route('/')
 def index():
@@ -29,8 +32,7 @@ def registreren():
     password = request.form['wachtwoord']
 
     # maak database object aan
-    DbLayer = DbClass()
-    DbLayer.gebruikerAanmaken(name,firstname,gender,weight,height,activity,username,password)
+    # Dbayer.gebruikerAanmaken(name,firstname,gender,weight,height,activity,username,password)
 
     return render_template('registreren.html')
 
@@ -38,33 +40,82 @@ def registreren():
 
 @app.route('/homepagina')
 def homepagina():
-    DB_layer = DbClass()
-    voornaam = DB_layer.ophalenVoornaam()
-    # voornaam = firstname.rstrip('[','(','\'',',',')',']')
+    voornaam = Db_Layer.ophalenVoornaam()
     return render_template('homepagina.html',voornaam=voornaam[0])
 
 @app.route('/overzicht')
 def gegevens():
-    DB_layer = DbClass()
-    gedronkenPerDag = DB_layer.gedronkenPerDag(1)
+    gedronkenPerDag = Db_Layer.gedronkenPerDag()
+    print(gedronkenPerDag)
+    # datum = DB_layer.ophalenDatum()
+    # print(datum)
+
     return render_template('gegevens.html', gedronkenPerDag=gedronkenPerDag)
 
 @app.route('/drinklogboek')
 def profiel():
-    DB_layer = DbClass()
-    lijst_metingen = DB_layer.ophalenTijd()
+    lijst_metingen = Db_Layer.ophalenTijd()
     # gebruiker = DB_layer.ophalenGebruiker()
-    gebruiker = DB_layer.ophalenGebruiker()
+    gebruiker = Db_Layer.ophalenGebruiker()
 
     return render_template('profiel.html', metingen=lijst_metingen, gebruiker=gebruiker[0])
 
-@app.route('/instellingen')
+@app.route('/instellingen', methods=['POST','GET'])
 def instellingen():
+    from flask import request
+
+    if request.method == 'POST':
+        voornaam = request.form['voornaam']
+        naam = request.form['achternaam']
+        geslacht = int(request.form['geslacht'])
+        gewicht = int(request.form['gewicht'])
+        grootte = int(request.form['grootte'])
+        activiteit = int(request.form['activiteit'])
+
+        # print(type(voornaam))
+        # print(type(naam))
+        # print(type(geslacht))
+        # print(type(gewicht))
+        # print(type(grootte))
+        # print(type(activiteit))
+
+        newSettings = Db_Layer.instellingenWijzigen(voornaam,naam,geslacht,gewicht,grootte,activiteit)
+        return redirect ('instellingen/gegevensgewijzigd')
+
     return render_template('instellingen.html')
 
-@app.route('/instellingen/wachtwoordwijzigen')
+
+
+@app.route('/instellingen/gegevensgewijzigd')
+def gegevensgewijzigd():
+    return render_template ('gegevensgewijzigd.html')
+
+
+
+@app.route('/instellingen/wachtwoordwijzigen', methods=['POST','GET'])
 def wachtwoordwijzigen():
+    from flask import request
+
+    if request.method == 'POST':
+        nieuwWachtwoord = request.form['nieuw']
+
+        oud = request.form['oud']
+        nieuw = request.form['nieuw']
+        bevestig = request.form['bevestig']
+        # print(type(DB_layer.ophalenWachtwoord()))
+        # print(DB_layer.ophalenWachtwoord()[0])
+        if (oud == Db_Layer.ophalenWachtwoord()[0]):
+            if(nieuw == bevestig):
+                newPassword = Db_Layer.wachtwoordWijzigen(nieuw)
+                return redirect('instellingen/wachtwoordgewijzigd')
+
+
     return render_template ('wachtwoordwijzigen.html')
+
+@app.route('/instellingen/wachtwoordgewijzigd')
+def wachtwoordgewijzigd():
+    return render_template('wachtwoordgewijzigd.html')
+
 
 @app.route('/404')
 def pageNotFound():
@@ -73,4 +124,4 @@ def pageNotFound():
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT",5000))
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=8080,debug=True)

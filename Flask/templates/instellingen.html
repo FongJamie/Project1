@@ -24,40 +24,40 @@
 
         <h1>Instellingen</h1>
 
-        <form action="" method="post">
+        <form action="" method="POST">
             <div>
             <label for="voornaam">Voornaam</label>
-            <input type="text" name="voornaam" id="voornaam">
+            <input type="text" name="voornaam" id="voornaam" required>
             </div>
 
             <div>
             <label for="achternaam">Achternaam</label>
-            <input type="text" name="achternaam" id="achternaam">
+            <input type="text" name="achternaam" id="achternaam" required>
             </div>
 
             <div>
             <label for="geslacht">Geslacht</label>
-            <select name="geslacht" id="geslacht">
-            <option value="Man">Man</option>
-            <option value="Vrouw">Vrouw</option></select>
+            <select name="geslacht" id="geslacht" required>
+            <option value="0">Man</option>
+            <option value="1">Vrouw</option></select>
             </div>
 
             <div>
             <label for="gewicht">Gewicht (in kg)</label>
-            <input type="number" name="gewicht" id="gewicht">
+            <input type="number" name="gewicht" id="gewicht" required>
             </div>
 
             <div>
             <label for="grootte">Grootte (in cm)</label>
-            <input type="number" name="grootte" id="grootte">
+            <input type="number" name="grootte" id="grootte" required>
             </div>
 
             <div>
             <label for="activiteit">Activiteit</label>
-            <select name="activiteit" id="activiteit">
-            <option value="Weinig">Weinig</option>
-            <option value="Gemiddeld">Gemiddeld</option>
-            <option value="Veel">Veel</option></select>
+            <select name="activiteit" id="activiteit" required>
+            <option value="1">Weinig</option>
+            <option value="2">Gemiddeld</option>
+            <option value="3">Veel</option></select>
             </div>
 
             <input type="submit" value="Opslaan" id="verzendknop" class="btn orange">
@@ -72,7 +72,7 @@
             </div>
 
             <div>
-		        <a href="{{ url_for("homepagina") }}" class="btn orange">Afmelden</a>
+		        <a href="{{ url_for("index") }}" class="btn orange">Afmelden</a>
             </div>
 
         </div>

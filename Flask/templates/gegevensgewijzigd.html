@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>smartHydration - Wachtwoord wijzigen</title>
+    <title>404 ERROR</title>
     <link rel="stylesheet" href="../static/css/pagina.css">
 </head>
 <body>
-	<header>
+
+    <header>
 		<nav>
             <a href="{{ url_for("homepagina") }}" id="logo"></a>
 			<ul>
@@ -20,35 +21,14 @@
 		</nav>
 	</header>
 
-    <section>
-        <h1>Wachtwoord wijzigen</h1>
 
-        <form action="" method="POST">
+<section>
 
-            <div>
-            <label for="oud">Oud wachtwoord</label>
-            <input type="password" name="oud" id="oud" required>
-            </div>
+    <h1>Gegevens gewijzigd!</h1>
 
-            <div>
-            <label for="nieuw">Nieuw wachtwoord</label>
-            <input type="password" name="nieuw" id="nieuw" required>
-            </div>
+    <p>Je gegevens zijn veranderd, klik <a href="{{ url_for("homepagina") }}" id="error">HIER</a> om terug naar de homepagina te gaan.</p>
 
-            <div>
-            <label for="bevestig">Bevestig wachtwoord</label>
-            <input type="password" name="bevestig" id="bevestig" required>
-            </div>
-
-            <input type="submit" value="Wachtwoord wijzigen" id="verzendknop" name="Wachtwoord wijzigen" class="btn orange">
-
-{#            <div>#}
-{#		        <a href="{{ url_for("wachtwoordwijzigen") }}" >Wachtwoord wijzigen</a>#}
-{#            </div>#}
-
-        </form>
-
-    </section>
+</section>
 
 	<footer class="footer-distributed">
 
@@ -69,9 +49,7 @@
 
 				<p>Jamie Fong &copy; 2017</p>
 			</div>
-
 	</footer>
-
 
 </body>
 </html>
