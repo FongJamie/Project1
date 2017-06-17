@@ -6,42 +6,13 @@ class DbClass:
         self.__dsn = {
             "host": "localhost",
             "user": "root",
-            "passwd": "",
+            "passwd": "!",
             "db": "project_db"
         }
 
         self.__connection = connector.connect(**self.__dsn)
         self.__cursor = self.__connection.cursor()
 
-    def getDataFromDatabase(self):
-        # Query zonder parameters
-        sqlQuery = "SELECT * FROM tablename"
-
-        self.__cursor.execute(sqlQuery)
-        result = self.__cursor.fetchall()
-        # self.__cursor.close()
-        return result
-
-    def getDataFromDatabaseMetVoorwaarde(self, voorwaarde):
-        # Query met parameters
-        sqlQuery = "SELECT * FROM tablename WHERE columnname = '{param1}'"
-        # Combineren van de query en parameter
-        sqlCommand = sqlQuery.format(param1=voorwaarde)
-
-        self.__cursor.execute(sqlCommand)
-        result = self.__cursor.fetchall()
-        # self.__cursor.close()
-        return result
-
-    def setDataToDatabase(self, value1):
-        # Query met parameters
-        sqlQuery = "INSERT INTO tablename (columnname) VALUES ('{param1}')"
-        # Combineren van de query en parameter
-        sqlCommand = sqlQuery.format(param1=value1)
-
-        self.__cursor.execute(sqlCommand)
-        self.__connection.commit()
-        # self.__cursor.close()
 
     def tijdDoorsturenNaarDb(self):
         query = "INSERT INTO `project_db`.`meting`(`Tijdstip gedrukt`,`WaterbekerID`,`gebruiker_ID`) VALUES (NOW(),1,1);"
@@ -80,20 +51,12 @@ class DbClass:
         return result
 
 
-    # def gedronkenPerDag(self, ID):
-    #     query = "select date(`Tijdstip gedrukt`), count(id) from meting WHERE gebruiker_ID = " + str(ID) + " GROUP BY DATE(`Tijdstip gedrukt`)"
-    #     self.__cursor.execute(query, multi=True)
-    #     result = self.__cursor.fetchone()
-    #     # self.__cursor.close()
-    #     return result
-
-
     def gedronkenPerDag(self):
         query = "SELECT DISTINCT(date(`Tijdstip gedrukt`)),   count(id),   count(id) * (SELECT `Hoeveelheid volume` FROM waterbeker WHERE waterbeker.ID = 1) /1000 FROM project_db.meting GROUP BY date(`Tijdstip gedrukt`);"
         self.__cursor.execute(query)
 
         result = self.__cursor.fetchall()
-        print(result)
+        # print(result)
         return result
 
 
@@ -106,7 +69,7 @@ class DbClass:
 
     def instellingenWijzigen(self, nVoornaam, nNaam, nGeslacht, nGewicht, nGrootte, nActiviteit):
         query = " UPDATE project_db.gebruiker SET Voornaam = '"+nVoornaam+"', Naam = '"+nNaam+"', Geslacht = %d, Gewicht = %d, Grootte = %d, Activiteit = %d  WHERE ID = 1;" % (nGeslacht, nGewicht, nGrootte, nActiviteit)
-        print(query)
+        # print(query)
         self.__cursor.execute(query)
         self.__connection.commit()
 
@@ -122,18 +85,3 @@ class DbClass:
         result = self.__cursor.fetchone()
         # self.__cursor.close()
         return result
-
-
-
-
-    def newColor(self, pCode, pName):
-        try:
-            query = "INSERT INTO db_weerstation.kleur " \
-                    "(kleurCode, Naam) " \
-                    "VALUES (%s , %s)" % (pCode, pName)
-            result = self.__cursor.execute(query)
-            self.__connection.commit()
-            return result
-        except:
-            print("Error, kleur is niet toegevoegd.")
-            return None
